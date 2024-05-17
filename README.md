@@ -21,7 +21,7 @@ $ npm install
 ### Docker
 ```bash
 # To run PostgreSQL database
-$ docker-compose up \-d
+$ docker-compose up -d
 ```
 
 ### Server & API Gateway
