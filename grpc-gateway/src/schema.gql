@@ -1,0 +1,55 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Article {
+  id: String!
+  title: String!
+  author: String!
+  topic: String!
+  body: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  getArticleById(id: FindArticleInput!): Article!
+  getArticleByFilter(filterDto: FilterInput): [Article!]!
+}
+
+input FindArticleInput {
+  id: String!
+}
+
+input FilterInput {
+  title: String
+  author: String
+  topic: String
+  body: String
+}
+
+type Mutation {
+  createArticle(createArticleDto: ArticleInput!): Article!
+  updateArticle(updateArticleDto: UpdateArticleInput!): Article!
+  deleteArticle(id: FindArticleInput!): Article!
+}
+
+input ArticleInput {
+  title: String!
+  author: String!
+  topic: String!
+  body: String!
+}
+
+input UpdateArticleInput {
+  id: String!
+  title: String
+  author: String
+  topic: String
+  body: String
+}

@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package article;
+
+service ArticleService {
+  rpc FindOne(FindArticleDto) returns (Article) {}
+  rpc FindByFilter(FilterArticleDto) returns (Articles) {}
+  rpc Create(CreateArticleDto) returns (Article) {}
+  rpc Update(UpdateArticleDto) returns (Article) {};
+  rpc Delete(FindArticleDto) returns (Article) {};
+}
+
+message Article {
+  string id = 1;
+  string title = 2;
+  string author = 3;
+  string topic = 4;
+  string body = 5;
+  google.protobuf.Timestamp createdAt = 6;
+  google.protobuf.Timestamp updatedAt = 7;
+  optional google.protobuf.Timestamp deletedAt = 8;
+}
+
+message Articles {
+  repeated Article articles = 1;
+}
+
+// message Response {
+//   optional Article data = 1;
+//   optional string message = 2;
+// }
+
+// message ListResponse {
+//   repeated Article data = 1;
+//   optional string message = 2;
+// }
+
+message FindArticleDto {
+  string id = 1;
+}
+
+message FilterArticleDto {
+  optional string title = 1;
+  optional string author = 2;
+  optional string topic = 3;
+  optional string body = 4;
+}
+
+message CreateArticleDto {
+  string title = 1;
+  string author = 2;
+  string topic = 3;
+  string body = 4;
+}
+
+message UpdateArticleDto {
+  string id = 1;
+  optional string title = 2;
+  optional string author = 3;
+  optional string topic = 4;
+  optional string body = 5;
+}
